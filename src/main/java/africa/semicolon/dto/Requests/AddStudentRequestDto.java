@@ -1,4 +1,4 @@
-package africa.semicolon.dto;
+package africa.semicolon.dto.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestDto {
+public class AddStudentRequestDto {
     private String name;
 
     private String email;
