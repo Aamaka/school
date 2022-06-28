@@ -3,6 +3,6 @@ package africa.semicolon.dto.Responses;
 import lombok.Data;
 
 @Data
-public class FindStudentByNameResponse {
+public class AddStudentResponse {
     private String message;
 }

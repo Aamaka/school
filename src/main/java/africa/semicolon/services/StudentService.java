@@ -1,12 +1,15 @@
 package africa.semicolon.services;
 
 import africa.semicolon.data.models.Student;
+import africa.semicolon.dto.Requests.AddStudentRequestDto;
+import africa.semicolon.dto.Responses.AddStudentResponse;
 
-import java.util.List;
+
 import java.util.Optional;
 
+
 public interface StudentService {
-    void addStudent (String name, String email, int age, double schoolFees, double amountPaid);
+    AddStudentResponse addStudent (AddStudentRequestDto dto);
 
     Student findStudentByName(String name);
     Student findStudentByEmail(String email);
