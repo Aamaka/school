@@ -9,11 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddStudentRequestDto {
-    private String name;
+    private String firstName;
+
+    private String lastName;
 
     private String email;
 
-    int age;
+    private int age;
+
+    private int grade;
 
     private double schoolFees;
 

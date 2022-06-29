@@ -1,11 +1,10 @@
 package africa.semicolon.data.models;
 
-import africa.semicolon.dto.Requests.AddStudentRequestDto;
+
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -17,11 +16,14 @@ public class Student {
     @Id
     private String id;
     @NonNull
-    private String name;
+    private String firstName;
+    @NonNull
+    private String lastName;
     @NonNull
     private String email;
 
-    private LocalDate dob;
+    @NonNull
+    private int grade;
     @NonNull
     int age;
     @NonNull

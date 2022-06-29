@@ -4,7 +4,6 @@ import africa.semicolon.data.models.Student;
 import africa.semicolon.data.repositories.StudentRepository;
 import africa.semicolon.dto.Requests.AddStudentRequestDto;
 import africa.semicolon.dto.Responses.AddStudentResponse;
-import africa.semicolon.exception.StudentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,25 +18,26 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public AddStudentResponse addStudent(AddStudentRequestDto dto) {
         Student student = new Student();
-        student.setName(dto.getName());
-        student.setEmail(dto.getEmail());
-        student.setAge(dto.getAge());
-        student.setSchoolFees(dto.getSchoolFees());
-        student.setAmountPaid(dto.getAmountPaid());
-        Student saved = studentRepository.save(student);
-        AddStudentResponse response = new AddStudentResponse();
-        response.setMessage("Welcome "+saved.getName()+" to our school");
-        return response;
-    }
+            student.setFirstName(dto.getFirstName());
+            student.setLastName(dto.getLastName());
+            student.setEmail(dto.getEmail());
+            student.setAge(dto.getAge());
+            student.setGrade(dto.getGrade());
+            student.setSchoolFees(dto.getSchoolFees());
+            student.setAmountPaid(dto.getAmountPaid());
+//
+//            if (student.getEmail().equals(dto.getEmail())) {
+//                AddStudentResponse response = new AddStudentResponse();
+//                response.setMessage("email already exist");
+//                return response;
+//            }
+            Student saved = studentRepository.save(student);
+            AddStudentResponse response = new AddStudentResponse();
+            response.setMessage("Welcome " + saved.getFirstName() + " " + saved.getLastName() + " to our school");
 
-    @Override
-    public Student findStudentByName(String name) {
-        Student student = studentRepository.findByName(name);
-        if(student != null){
-            return student;
+            return response;
         }
-        throw new StudentException("Student does not exist");
-    }
+
 
     @Override
     public Student findStudentByEmail(String email) {

@@ -23,10 +23,5 @@ public class StudentController {
        return service.addStudent(requestDto);
     }
 
-    @PostMapping("/find/student")
-    public Student findStudent(@RequestBody FindStudentByNameRequest dto){
-      return service.findStudentByName(dto.getName());
-
-    }
 
 }
