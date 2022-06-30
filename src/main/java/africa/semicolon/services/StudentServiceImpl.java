@@ -4,6 +4,7 @@ import africa.semicolon.data.models.Student;
 import africa.semicolon.data.repositories.StudentRepository;
 import africa.semicolon.dto.Requests.AddStudentRequestDto;
 import africa.semicolon.dto.Responses.AddStudentResponse;
+import africa.semicolon.exception.StudentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,11 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student findStudentByEmail(String email) {
-        return studentRepository.findByEmail(email);
+        Student student =  studentRepository.findByEmail(email);
+        if (student.getEmail().equals(email)){
+            return student;
+        }
+        throw  new StudentException("student does not exist");
     }
 
     @Override

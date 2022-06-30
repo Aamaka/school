@@ -23,5 +23,9 @@ public class StudentController {
        return service.addStudent(requestDto);
     }
 
+    @PostMapping("/find")
+    public Student findStudentByEmail(String email){
+        return service.findStudentByEmail(email);
+    }
 
 }
