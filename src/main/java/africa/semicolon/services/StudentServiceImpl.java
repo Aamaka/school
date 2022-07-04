@@ -11,42 +11,37 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
 
     @Override
     public AddStudentResponse addStudent(AddStudentRequestDto dto) {
+        if(studentRepository.existsByEmail(dto.getEmail())) throw new StudentException("Student is already registered");
         Student student = new Student();
-            student.setFirstName(dto.getFirstName());
-            student.setLastName(dto.getLastName());
-            student.setEmail(dto.getEmail());
-            student.setAge(dto.getAge());
-            student.setGrade(dto.getGrade());
-            student.setSchoolFees(dto.getSchoolFees());
-            student.setAmountPaid(dto.getAmountPaid());
-//
-//            if (student.getEmail().equals(dto.getEmail())) {
-//                AddStudentResponse response = new AddStudentResponse();
-//                response.setMessage("email already exist");
-//                return response;
-//            }
-            Student saved = studentRepository.save(student);
-            AddStudentResponse response = new AddStudentResponse();
-            response.setMessage("Welcome " + saved.getFirstName() + " " + saved.getLastName() + " to our school");
+        student.setFirstName(dto.getFirstName());
+        student.setLastName(dto.getLastName());
+        student.setEmail(dto.getEmail());
+        student.setAge(dto.getAge());
+        student.setGrade(dto.getGrade());
+        student.setSchoolFees(dto.getSchoolFees());
+        student.setAmountPaid(dto.getAmountPaid());
+        Student saved = studentRepository.save(student);
+        AddStudentResponse response = new AddStudentResponse();
+        response.setMessage("Welcome " + saved.getFirstName() + " " + saved.getLastName() + " to our school");
 
-            return response;
-        }
+        return response;
+    }
 
 
     @Override
     public Student findStudentByEmail(String email) {
-        Student student =  studentRepository.findByEmail(email);
-        if (student.getEmail().equals(email)){
+        Student student = studentRepository.findByEmail(email);
+        if (student.getEmail().equals(email)) {
             return student;
         }
-        throw  new StudentException("student does not exist");
+        throw new StudentException("student does not exist");
     }
 
     @Override
