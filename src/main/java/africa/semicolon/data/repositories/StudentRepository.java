@@ -13,4 +13,6 @@ public interface StudentRepository extends MongoRepository<Student, String> {
     Optional<Student> findById(String id);
 
     boolean existsByEmail(String email);
+
+    Student findByClassGrade(String grade);
 }

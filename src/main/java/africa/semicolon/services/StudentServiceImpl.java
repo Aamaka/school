@@ -7,6 +7,7 @@ import africa.semicolon.exception.StudentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -31,6 +32,14 @@ public class StudentServiceImpl implements StudentService {
         return response;
     }
 
+    @Override
+    public Student find(String grade){
+        Student student = studentRepository.findByClassGrade(grade);
+        if(student != null){
+            return student;
+        }
+        return null;
+    }
 
 
 }

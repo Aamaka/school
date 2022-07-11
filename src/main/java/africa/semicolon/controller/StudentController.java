@@ -1,15 +1,11 @@
 package africa.semicolon.controller;
-
-import africa.semicolon.data.models.Student;
 import africa.semicolon.dto.Requests.RegisterStudentRequest;
 import africa.semicolon.dto.Responses.RegisterStudentResponse;
 import africa.semicolon.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 public class StudentController {
@@ -22,9 +18,4 @@ public class StudentController {
        return service.register(requestDto);
     }
 
-    @PostMapping("/find")
-    public Student findStudentByEmail(String email){
-        return service.findStudentByEmail(email);
     }
-
-}
