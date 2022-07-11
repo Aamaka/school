@@ -9,9 +9,8 @@ import java.util.Optional;
 
 
 public interface StudentService {
-    RegisterStudentResponse addStudent (RegisterStudentRequest dto);
+    RegisterStudentResponse register(RegisterStudentRequest dto);
 
-    Student findStudentByEmail(String email);
     Optional<Student> findStudentById(String id);
     void delete(Student student);
     Student update(Student student);

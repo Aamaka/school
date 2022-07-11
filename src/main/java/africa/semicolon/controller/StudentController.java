@@ -19,7 +19,7 @@ public class StudentController {
 
     @PostMapping("/student")
     public RegisterStudentResponse addStudent(@RequestBody RegisterStudentRequest requestDto){
-       return service.addStudent(requestDto);
+       return service.register(requestDto);
     }
 
     @PostMapping("/find")

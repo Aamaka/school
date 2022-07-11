@@ -16,31 +16,21 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
 
     @Override
-    public RegisterStudentResponse addStudent(RegisterStudentRequest dto) {
-        if(studentRepository.existsByEmail(dto.getEmail())) throw new StudentException("Student is already registered");
+    public RegisterStudentResponse register(RegisterStudentRequest request) {
+        if(studentRepository.existsByEmail(request.getEmail())) throw new StudentException("Student is already registered");
         Student student = new Student();
-        student.setFirstName(dto.getFirstName());
-        student.setLastName(dto.getLastName());
-        student.setEmail(dto.getEmail());
-        student.setAge(dto.getAge());
-        student.setGrade(dto.getGrade());
-        student.setSchoolFees(dto.getSchoolFees());
-        student.setAmountPaid(dto.getAmountPaid());
+        student.setFirstName(request.getFirstName());
+        student.setLastName(request.getLastName());
+        student.setEmail(request.getEmail());
+        student.setAge(request.getAge());
+        student.setGrade(request.getGrade());
+        student.setSchoolFees(request.getSchoolFees());
+        student.setAmountPaid(request.getAmountPaid());
         Student saved = studentRepository.save(student);
         RegisterStudentResponse response = new RegisterStudentResponse();
         response.setMessage("Welcome " + saved.getFirstName() + " " + saved.getLastName() + " to our school");
 
         return response;
-    }
-
-
-    @Override
-    public Student findStudentByEmail(String email) {
-        Student student = studentRepository.findByEmail(email);
-        if (student.getEmail().equals(email)) {
-            return student;
-        }
-        throw new StudentException("student does not exist");
     }
 
     @Override
