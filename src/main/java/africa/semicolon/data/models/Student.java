@@ -23,7 +23,7 @@ public class Student {
     private String email;
 
     @NonNull
-    private int grade;
+    private String classGrade;
     @NonNull
     int age;
     @NonNull

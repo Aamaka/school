@@ -7,8 +7,6 @@ import africa.semicolon.exception.StudentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -23,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
         student.setLastName(request.getLastName());
         student.setEmail(request.getEmail());
         student.setAge(request.getAge());
-        student.setGrade(request.getGrade());
+        student.setClassGrade(request.getClassGrade());
         student.setSchoolFees(request.getSchoolFees());
         student.setAmountPaid(request.getAmountPaid());
         Student saved = studentRepository.save(student);
@@ -33,19 +31,7 @@ public class StudentServiceImpl implements StudentService {
         return response;
     }
 
-    @Override
-    public Optional<Student> findStudentById(String id) {
-        return studentRepository.findById(id);
-    }
 
-    @Override
-    public void delete(Student student) {
-        studentRepository.delete(student);
-    }
 
-    @Override
-    public Student update(Student student) {
-        return studentRepository.save(student);
-    }
 }
 

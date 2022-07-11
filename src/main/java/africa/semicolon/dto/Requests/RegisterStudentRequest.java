@@ -17,7 +17,7 @@ public class RegisterStudentRequest {
 
     private int age;
 
-    private int grade;
+    private String classGrade;
 
     private double schoolFees;
 
