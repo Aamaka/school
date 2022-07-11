@@ -1,8 +1,7 @@
 package africa.semicolon.services;
-
 import africa.semicolon.data.models.Student;
 import africa.semicolon.data.repositories.StudentRepository;
-import africa.semicolon.dto.Requests.AddStudentRequestDto;
+import africa.semicolon.dto.Requests.AddStudentRequest;
 import africa.semicolon.dto.Responses.AddStudentResponse;
 import africa.semicolon.exception.StudentException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
 
     @Override
-    public AddStudentResponse addStudent(AddStudentRequestDto dto) {
+    public AddStudentResponse addStudent(AddStudentRequest dto) {
         if(studentRepository.existsByEmail(dto.getEmail())) throw new StudentException("Student is already registered");
         Student student = new Student();
         student.setFirstName(dto.getFirstName());

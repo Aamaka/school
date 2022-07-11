@@ -1,8 +1,7 @@
 package africa.semicolon.controller;
 
 import africa.semicolon.data.models.Student;
-import africa.semicolon.dto.Requests.AddStudentRequestDto;
-import africa.semicolon.dto.Requests.FindStudentByNameRequest;
+import africa.semicolon.dto.Requests.AddStudentRequest;
 import africa.semicolon.dto.Responses.AddStudentResponse;
 import africa.semicolon.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class StudentController {
     private StudentService service;
 
     @PostMapping("/student")
-    public AddStudentResponse addStudent(@RequestBody AddStudentRequestDto requestDto){
+    public AddStudentResponse addStudent(@RequestBody AddStudentRequest requestDto){
        return service.addStudent(requestDto);
     }
 
