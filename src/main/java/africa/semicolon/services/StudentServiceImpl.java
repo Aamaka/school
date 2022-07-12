@@ -36,7 +36,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> find(String grade){
-        return studentRepository.findByClassGrade(grade);
+        List<Student> student = studentRepository.findByClassGrade(grade);
+        if(student != null){
+            return student;
+        }else {
+
+        }
+        return null;
     }
 
 
