@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,5 +15,5 @@ public interface StudentRepository extends MongoRepository<Student, String> {
 
     boolean existsByEmail(String email);
 
-    Student findByClassGrade(String grade);
+    List<Student> findByClassGrade(String grade);
 }

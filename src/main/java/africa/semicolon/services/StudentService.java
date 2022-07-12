@@ -9,5 +9,5 @@ import java.util.List;
 public interface StudentService {
     RegisterStudentResponse register(RegisterStudentRequest dto);
 
-    Student find(String grade);
+    List<Student> find(String grade);
 }
