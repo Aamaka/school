@@ -40,9 +40,8 @@ public class StudentServiceImpl implements StudentService {
         if(student != null){
             return student;
         }else {
-
+            throw new StudentException("that cohort does not exist");
         }
-        return null;
     }
 
 

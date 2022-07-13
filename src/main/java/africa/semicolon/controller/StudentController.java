@@ -25,7 +25,7 @@ public class StudentController {
     }
 
     @GetMapping("/find")
-    public List<Student> find(String grade){
+    public List<Student> find(@RequestBody String grade){
         return service.find(grade);
     }
 
